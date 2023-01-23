@@ -1,0 +1,58 @@
+{
+  "uuid": "2d478afe-74a4-4b9c-88a1-ee26f1da1962",
+  "suiteInfo": {
+    "name": "Default Suite",
+    "outputDir": "C:\\Users\\varzrelian\\IdeaProjects\\QTAFnewVersion\\QtafProject\\test-output\\Default Suite"
+  },
+  "systemInfo": {
+    "osName": "Windows 11",
+    "javaVersion": "17.0.5",
+    "userDir": "C:\\Users\\varzrelian\\IdeaProjects\\QTAFnewVersion\\QtafProject"
+  },
+  "processInfo": {
+    "pid": 11700
+  },
+  "threadInfo": {
+    "threadId": 1,
+    "threadName": "main"
+  },
+  "osName": "Windows 11",
+  "driverName": "chrome",
+  "tags": {},
+  "start": "Jan 23, 2023, 11:17:26 AM",
+  "end": "Jan 23, 2023, 11:17:27 AM",
+  "duration": 1126,
+  "logDirectory": "C:\\Users\\varzrelian\\IdeaProjects\\QTAFnewVersion\\QtafProject\\logs\\2023-01-23\\11-17-23-chrome-2d478afe-74a4-4b9c-88a1-ee26f1da1962",
+  "testFeatureLogCollections": [
+    {
+      "featureId": 822815599,
+      "featureName": "Open browser and visit selenium documentation",
+      "featureDescription": "",
+      "testScenarioLogCollection": [
+        {
+          "featureId": 822815599,
+          "scenarioId": "org.acme.tests.SeleniumTest.testBrowser",
+          "scenarioName": "Open browser and visit selenium documentation",
+          "description": "Open the browser and go to the selenium documentation website",
+          "start": "Jan 23, 2023, 11:17:26 AM",
+          "end": "Jan 23, 2023, 11:17:27 AM",
+          "duration": 854,
+          "threadId": 1,
+          "threadName": "main",
+          "groups": [],
+          "groupDependencies": [],
+          "methodDependencies": [],
+          "testParameters": [],
+          "status": "SUCCESS",
+          "logMessages": [],
+          "screenshotPaths": [
+            "C:\\Users\\varzrelian\\IdeaProjects\\QTAFnewVersion\\QtafProject\\logs\\2023-01-23\\11-17-23-chrome-2d478afe-74a4-4b9c-88a1-ee26f1da1962\\org.acme.tests.SeleniumTest.testBrowser_after.png"
+          ],
+          "screenshotBefore": "",
+          "screenshotAfter": "C:\\Users\\varzrelian\\IdeaProjects\\QTAFnewVersion\\QtafProject\\logs\\2023-01-23\\11-17-23-chrome-2d478afe-74a4-4b9c-88a1-ee26f1da1962/org.acme.tests.SeleniumTest.testBrowser_after.png",
+          "tags": {}
+        }
+      ]
+    }
+  ]
+}
