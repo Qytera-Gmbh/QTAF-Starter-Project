@@ -10,7 +10,7 @@ import javax.inject.Singleton;
 
 @Singleton
 public class MainSitePO extends QtafTestNGContext {
-    String headlineSelector = "div.td-content h1";
+    String headlineSelector = "div.text-center h1";
 
     @Step(
             name = "Open Site",
@@ -28,6 +28,14 @@ public class MainSitePO extends QtafTestNGContext {
     public void checkHeadline(String expectedText) {
         // Extract headline text from website
         String headlineText = driver.findElement(By.cssSelector(headlineSelector)).getText();
-        Assert.assertEquals(headlineText, "The Selenium Browser Automation Project");
+        Assert.assertEquals(headlineText, expectedText);
+    }
+
+    @Step(
+            name = "Check calculation",
+            description = "Check calculation"
+    )
+    public void checkCalculation(int a, int b, int c) {
+        Assert.assertEquals(a*b, c);
     }
 }

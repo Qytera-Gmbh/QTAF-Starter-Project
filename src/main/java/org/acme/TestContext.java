@@ -7,7 +7,6 @@ import javax.inject.Inject;
 
 
 public class TestContext extends QtafTestNGContext {
-
     @Inject
     protected MainSitePO mainSitePO;
 }

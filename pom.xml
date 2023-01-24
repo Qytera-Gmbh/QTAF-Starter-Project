@@ -17,7 +17,17 @@
         <dependency>
             <groupId>de.qytera</groupId>
             <artifactId>qtaf-core</artifactId>
-            <version>0.0.2</version>
+            <version>0.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>de.qytera</groupId>
+            <artifactId>qtaf-html-report-plugin</artifactId>
+            <version>0.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>de.qytera</groupId>
+            <artifactId>qtaf-allure-plugin</artifactId>
+            <version>0.0.3</version>
         </dependency>
     </dependencies>
 
