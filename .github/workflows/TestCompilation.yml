@@ -56,7 +56,7 @@ jobs:
       - name: Build docker image
         run: sh ./scripts/docker/build-java19-image.sh
 
-  build_and_run:
+  build_and_run_on_java_17:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -64,6 +64,46 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
+          distribution: 'temurin'
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip' # caching pip dependencies
+      - name: Build with Maven
+        run: mvn clean compile
+      - name: Run tests
+        run: mvn exec:java -Dexec.mainClass="org.acme.TestRunner"
+      - name: Check test artifacts
+        run: python checks.py
+
+  build_and_run_on_java_18:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 18
+        uses: actions/setup-java@v3
+        with:
+          java-version: '18'
+          distribution: 'temurin'
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip' # caching pip dependencies
+      - name: Build with Maven
+        run: mvn clean compile
+      - name: Run tests
+        run: mvn exec:java -Dexec.mainClass="org.acme.TestRunner"
+      - name: Check test artifacts
+        run: python checks.py
+
+  build_and_run_on_java_19:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 18
+        uses: actions/setup-java@v3
+        with:
+          java-version: '19'
           distribution: 'temurin'
       - uses: actions/setup-python@v4
         with:
