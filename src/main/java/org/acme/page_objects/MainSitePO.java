@@ -38,4 +38,9 @@ public class MainSitePO extends QtafTestNGContext {
     public void checkCalculation(int a, int b, int c) {
         Assert.assertEquals(a*b, c);
     }
+
+    @Step(name = "sayHello", description = "Say Hello")
+    public void sayHello(String text) {
+        System.out.println(text);
+    }
 }

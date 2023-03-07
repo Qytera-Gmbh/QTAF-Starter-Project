@@ -53,17 +53,20 @@ public class TestOne extends TestContext {
 
     @Test(testName = "Test DataProvider", description = "Test the data provider", dataProvider = "myDataProvider")
     public void testDataProvider(String[] s) {
-        System.out.println("Provided String: " + s[0]);
         Thread thread = Thread.currentThread();
         System.out.println("THREAD: " + thread.getName());
+        mainSitePO.checkCalculation(2, 3, 6);
+        System.out.println("Provided String: " + s[0]);
         assert s[0].length() > 0;
     }
 
     @Test(testName = "Test DataProvider 2", description = "Test the data provider 2", dataProvider = "dataProvider2")
     public void testDataProviderTwo(IData d) {
-        d.doSomething();
         Thread thread = Thread.currentThread();
         System.out.println("THREAD: " + thread.getName());
+        mainSitePO.checkCalculation(2, 3, 6);
+        mainSitePO.sayHello(null);
+        d.doSomething();
     }
 }
 
