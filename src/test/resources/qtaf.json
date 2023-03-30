@@ -6,7 +6,7 @@
     "package": "org.acme.tests"
   },
   "driver": {
-    "name": "chrome",
+    "name": "firefox",
     "remoteUrl": null,
     "implicitWaitTimeout": 30,
     "quitAfterTesting": true,
