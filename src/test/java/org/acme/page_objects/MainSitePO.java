@@ -3,13 +3,14 @@ package org.acme.page_objects;
 import de.qytera.qtaf.core.guice.annotations.Step;
 import de.qytera.qtaf.testng.context.QtafTestNGContext;
 
+import org.acme.TestContext;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import javax.inject.Singleton;
 
 
 @Singleton
-public class MainSitePO extends QtafTestNGContext {
+public class MainSitePO extends TestContext {
     String headlineSelector = "div.text-center h1";
 
     @Step(
@@ -23,7 +24,7 @@ public class MainSitePO extends QtafTestNGContext {
 
     @Step(
             name = "Check Headline",
-            description = "Check if the headline of the site cintains a specific text"
+            description = "Check if the headline of the site contains a specific text"
     )
     public void checkHeadline(String expectedText) {
         // Extract headline text from website
