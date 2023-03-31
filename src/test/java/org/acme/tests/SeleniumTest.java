@@ -27,6 +27,7 @@ public class SeleniumTest extends TestContext {
     @BeforeMethod
     public void beforeMethod() {
         System.out.println("Hello, @BeforeMethod SeleniumTest");
+        mainSitePO.openSite("https://google.com");
         mainSitePO.checkCalculation(-2, -10, 20);
     }
 
@@ -43,6 +44,7 @@ public class SeleniumTest extends TestContext {
     @AfterMethod
     public void afterMethod() {
         System.out.println("Hello, @AfterMethod SeleniumTest");
+        mainSitePO.openSite("https://wikipedia.com");
         mainSitePO.checkCalculation(-2, -20, 40);
     }
 
