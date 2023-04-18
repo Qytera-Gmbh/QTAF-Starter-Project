@@ -19,3 +19,10 @@ jobs:
     steps:
       - name: Print Hello World
         run: echo "Hello World!"
+
+  my_action_3:
+    runs-on: ubuntu-latest
+    needs: [my_action, my_action_2]
+    steps:
+      - name: Print Hello World
+        run: echo "Hello World!"
