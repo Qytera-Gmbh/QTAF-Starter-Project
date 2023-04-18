@@ -106,3 +106,32 @@ jobs:
         with:
           name: QTAF-logs
           path: logs
+
+  test_execution_firefox_secrets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      service-docker-firefox:
+        image: selenium/standalone-firefox
+        ports:
+          - 4445:4444
+    
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+      - name: test checkout sources
+        run: ls
+      - name: Set up JDK 19
+        uses: actions/setup-java@v3
+        with:
+          java-version: '19'
+          distribution: 'zulu'
+      - name: Test Java installation
+        run: java --version
+      - name: Testrun with Maven against firefox
+        run: mvn clean test -q -Ddriver.name=firefox-remote -Ddriver.remoteUrl=http://localhost:4445/wd/hub -Dwebsite=${{ secrets.PAGE_URL }}
+      - name: Archive QTAF logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: QTAF-logs
+          path: logs
