@@ -1,4 +1,4 @@
-name: StarterTest
+name: Action Huy
 
 env:
   JAVA_VERSION: '17'
@@ -6,11 +6,12 @@ env:
 
 on:
   workflow_dispatch:
-    # triggered manually
+  # triggered manually
 
 jobs:
   test_huy:
     runs-on: ubuntu-latest
+
     services:
       chrome:
         image: selenium/standalone-chrome
@@ -20,6 +21,14 @@ jobs:
         image: selenium/standalone-firefox
         ports:
           - 4445:4444
+    strategy:
+      matrix:
+        browser: [ chrome, firefox ]
+        include:
+          - browser: chrome
+            ports: 4444
+          - browser: firefox
+            ports: 4445
     steps:
       - name: Print helo weorld
         run: echo "Helo, weorld!"
@@ -37,10 +46,8 @@ jobs:
         run: |
           ls -l
       - name: mvn clean install
-        run: mvn clean install -DskipTests
-      - name: run test chrome
-        run: mvn clean test -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub
-      - name: run tests firefox
-        run: mvn clean test -Ddriver.name=firefox-remote -Ddriver.remoteUrl=http://localhost:4445/wd/hub
+        run: mvn clean install -DskipTests --no-transfer-progress
+      - name: Run test ${{matrix.browser}}
+        run: mvn clean test -Ddriver.name=${{matrix.browser}}-remote -Ddriver.remoteUrl=http://localhost:${{matrix.ports}}/wd/hub
 
 
