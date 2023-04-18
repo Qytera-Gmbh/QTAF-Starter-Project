@@ -4,7 +4,7 @@ env:
   JAVA_VERSION: '17'
   JAVA_DISTRIBUTION: 'zulu'
   WEBSITE: 'https://www.google.com'
-
+  PAGE_URL: ${{secrets.PAGE_URL}}
 on:
   workflow_dispatch:
   # triggered manually
