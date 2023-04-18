@@ -3,6 +3,7 @@ name: Action Huy
 env:
   JAVA_VERSION: '17'
   JAVA_DISTRIBUTION: 'zulu'
+  WEBSITE: 'https://www.google.com'
 
 on:
   workflow_dispatch:
