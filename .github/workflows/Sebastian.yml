@@ -25,7 +25,7 @@ jobs:
       - name: check java version
         run: |
           java --version
-      - name: compile code
+      - name: run tests
         run: |
           mvn --version
-          mvn compile --no-transfer-progress
+          mvn test --no-transfer-progress

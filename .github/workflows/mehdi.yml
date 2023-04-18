@@ -16,3 +16,8 @@ jobs:
       - name: Echo Java version
         run: |
           java --version
+      - name: copy git code
+        run: |
+          ls
+      - name: maven clean
+        run: mvn clean compile
