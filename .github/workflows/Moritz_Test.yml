@@ -2,9 +2,6 @@
 name: Moritz Test Pipeline
 
 on:
-  push:
-    branches:
-      - master
   workflow_dispatch:
 
 jobs:
