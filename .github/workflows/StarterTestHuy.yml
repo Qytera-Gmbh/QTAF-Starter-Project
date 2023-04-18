@@ -7,7 +7,7 @@ on:
       - master
   workflow_dispatch:
 
-.env:
+env:
   JAVA_VERSION: '17'
   JAVA_DISTRIBUTION: 'zulu'
 
