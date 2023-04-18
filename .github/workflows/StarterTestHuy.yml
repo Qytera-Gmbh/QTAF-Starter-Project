@@ -50,5 +50,6 @@ jobs:
         run: mvn clean install -DskipTests --no-transfer-progress
       - name: Run test ${{matrix.browser}}
         run: mvn clean test -Ddriver.name=${{matrix.browser}}-remote -Ddriver.remoteUrl=http://localhost:${{matrix.ports}}/wd/hub
-
+      - name: check env WEBSITE
+        run: echo ${{env.WEBSITE}}
 
