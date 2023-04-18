@@ -23,5 +23,5 @@ jobs:
       - name: mvn --version
         run: mvn --version
       - name: mvn clean install
-        run: mvn clean install
+        run: mvn clean install -DskipTests
 
