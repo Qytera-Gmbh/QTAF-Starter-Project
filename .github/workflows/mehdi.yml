@@ -1,4 +1,4 @@
-name: Install Java
+name: Learn Github Actions
 
 on:
   workflow_dispatch:
