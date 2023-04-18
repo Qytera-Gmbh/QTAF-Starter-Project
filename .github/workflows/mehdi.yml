@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  WEBSITE: "Mehdi"
+  WEBSITE: "https://www.google.com"
 
 jobs:
   install_java:
@@ -67,8 +67,12 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
       - name: Run tests chrome
-        run: mvn clean test -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub --no-transfer-progress
-
+        run: mvn clean test -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub -Dwebsite=${{ env.WEBSITE }} --no-transfer-progress
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: logs
 
   build_and_run_on_java_17_firefox:
     runs-on: ubuntu-latest
