@@ -29,6 +29,11 @@ jobs:
         run: echo ${{ env.WEBSITE }}
       - name: Run test cases on Chrome browser
         run: mvn clean test -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub  --no-transfer-progress
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: chrome-reports
+          path: logs
 
   test_firefox:
     runs-on: ubuntu-latest
@@ -51,3 +56,8 @@ jobs:
         run: mvn clean compile -DskipTests=True --no-transfer-progress
       - name: Run test cases on Firefox browser
         run: mvn clean test -Ddriver.name=firefox-remote -Ddriver.remoteUrl=http://localhost:4445/wd/hub -Dwebsite=https://qytera-gmbh.github.io --no-transfer-progress
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: firefox-reports
+          path: logs
