@@ -27,8 +27,10 @@ jobs:
       - run: java --version
       - name: Compile code
         run: mvn clean compile -DskipTests=True --no-transfer-progress
-      - name: Run test cases
+      - name: Run test cases on Chrome browser
         run: mvn clean test -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub  --no-transfer-progress
+      - name: Run test cases on Firefox browser
+        run: mvn clean test -Ddriver.name=firefox-remote -Ddriver.remoteUrl=http://localhost:4445/wd/hub  --no-transfer-progress
 
   my_action_2:
     runs-on: ubuntu-latest
