@@ -52,16 +52,8 @@ jobs:
         run: mvn clean test -Ddriver.name=${{matrix.browser}}-remote -Ddriver.remoteUrl=http://localhost:${{matrix.ports}}/wd/hub
       - name: check env WEBSITE
         run: echo ${{env.WEBSITE}}
-
-  build_artifact:
-    runs-on: ubuntu-latest
-    steps:
-      - name: actions/checkout@v2
-        uses: actions/checkout@v2
-      - name: mvn install
-        run: mvn install -DskipTests --no-transfer-progress
-      - name: build artifact
+      - name: make logs
         uses: actions/upload-artifact@v2
         with:
-          name: artifact-custom
-          path: target/*.jar
+          name: artifact-logs
+          path: target/logs
