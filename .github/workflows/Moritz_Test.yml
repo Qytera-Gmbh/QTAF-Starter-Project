@@ -1,5 +1,5 @@
 # Moritz Test Pipeline
-name: Run Qtaf test against SuiteCRM
+name: Moritz Test Pipeline
 
 on:
   push:
