@@ -50,4 +50,4 @@ jobs:
       - name: Compile code
         run: mvn clean compile -DskipTests=True --no-transfer-progress
       - name: Run test cases on Firefox browser
-        run: mvn clean test -Ddriver.name=firefox-remote -Ddriver.remoteUrl=http://localhost:4445/wd/hub  --no-transfer-progress
+        run: mvn clean test -Ddriver.name=firefox-remote -Ddriver.remoteUrl=http://localhost:4445/wd/hub -Dwebsite=https://qytera-gmbh.github.io --no-transfer-progress
