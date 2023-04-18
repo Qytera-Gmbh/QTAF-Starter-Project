@@ -6,7 +6,7 @@ env:
 
 on:
   workflow_dispatch:
-    # triggered manually
+  # triggered manually
 
 jobs:
   test_huy:
@@ -23,8 +23,12 @@ jobs:
           - 4445:4444
     strategy:
       matrix:
-        browser: [chrome, firefox]
-        ports: [4444, 4445]
+        browser: [ chrome, firefox ]
+        include:
+          - browser: chrome
+            ports: 4444
+          - browser: firefox
+            ports: 4445
     steps:
       - name: Print helo weorld
         run: echo "Helo, weorld!"
