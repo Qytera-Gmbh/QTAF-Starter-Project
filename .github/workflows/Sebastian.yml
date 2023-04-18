@@ -50,11 +50,9 @@ jobs:
           -Ddriver.name=${{ matrix.driver }} \
           -Ddriver.remoteUrl=${{ matrix.url }} \
           -Dwebsite=${{ secrets.PAGE_URL }}
-      - run: echo ${{ matrix.driver }} > out.log
       - name: archive logs
         uses: actions/upload-artifact@v3
         with:
           name: log
           path: |
             logs
-            out.log
