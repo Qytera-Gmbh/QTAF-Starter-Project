@@ -1,0 +1,14 @@
+name: Action Tilo
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  my_action:
+    steps:
+      - name: Print Hello World
+        run: echo "Hello World!"
