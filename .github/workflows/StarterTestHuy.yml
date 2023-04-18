@@ -3,6 +3,7 @@ name: Action Huy
 env:
   JAVA_VERSION: '17'
   JAVA_DISTRIBUTION: 'zulu'
+  WEBSITE: 'https://www.google.com'
 
 on:
   workflow_dispatch:
@@ -48,6 +49,6 @@ jobs:
       - name: mvn clean install
         run: mvn clean install -DskipTests --no-transfer-progress
       - name: Run test ${{matrix.browser}}
-        run: mvn clean test -Ddriver.name=${{matrix.browser}}-remote -Ddriver.remoteUrl=http://localhost:{{matrix.ports}}/wd/hub
+        run: mvn clean test -Ddriver.name=${{matrix.browser}}-remote -Ddriver.remoteUrl=http://localhost:${{matrix.ports}}/wd/hub
 
 
