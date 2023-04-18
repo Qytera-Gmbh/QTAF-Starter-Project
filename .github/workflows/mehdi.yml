@@ -8,17 +8,17 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - uses: actions/checkout@v3
       - name: Install Java
         uses: actions/setup-java@v2
         with:
-          java-version: '15'
-          distribution: 'adopt'
+          java-version: '17'
+          distribution: 'zulu'
       - name: Echo Java version
         run: |
           java --version
       - name: copy git code
         run: |
           ls
-      - uses: actions/checkout@v3
       - name: maven clean
         run: mvn clean compile
