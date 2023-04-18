@@ -4,7 +4,7 @@ env:
   JAVA_VERSION: '17'
   JAVA_DISTRIBUTION: 'zulu'
   WEBSITE: 'https://www.google.com'
-
+  PAGE_URL: ${{secrets.PAGE_URL}}
 on:
   workflow_dispatch:
   # triggered manually
@@ -52,6 +52,8 @@ jobs:
         run: mvn clean test -Ddriver.name=${{matrix.browser}}-remote -Ddriver.remoteUrl=http://localhost:${{matrix.ports}}/wd/hub
       - name: check env WEBSITE
         run: echo ${{env.WEBSITE}}
+      - name: check secrete
+        run: echo ${{env.PAGE_URL}}
       - name: make logs
         uses: actions/upload-artifact@v2
         with:
