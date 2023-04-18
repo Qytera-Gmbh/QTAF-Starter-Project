@@ -3,6 +3,9 @@ name: Learn Github Actions
 on:
   workflow_dispatch:
 
+env:
+  WEBSITE: "Mehdi"
+
 jobs:
   install_java:
     runs-on: windows-latest

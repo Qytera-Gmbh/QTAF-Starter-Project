@@ -21,6 +21,8 @@ jobs:
           - driver: 'chrome-remote'
             url: http://localhost:4444/wd/hub
 
+    env:
+      WEBSITE: "https://github.com"
 
     services:
       chrome:

@@ -3,9 +3,42 @@ name: Moritz Test Pipeline
 
 on:
   workflow_dispatch:
+  
+env:
+  WEBSITE: https://www.spiegel.de/
 
 jobs:
   test_execution_chrome:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      service-docker-chrome:
+        image: selenium/standalone-chrome
+        ports:
+          - 4444:4444
+          
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+      - name: test checkout sources
+        run: ls
+      - name: Set up JDK 19
+        uses: actions/setup-java@v3
+        with:
+          java-version: '19'
+          distribution: 'zulu'
+      - name: Test Java installation
+        run: java --version
+      #- name: Complie with Maven (no dependency check)
+      #  run: mvn clean compile -q -B
+      #- name: Compile with Maven (with dependencies)
+      #  run: mvn clean compile -U   
+      #- name: Build with Maven (with dependencies)
+      #  run: mvn clean install -q -DskipTests  
+      - name: Testrun with Maven against chrome
+        run: mvn clean test -q -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub -Dwebsite=https://www.heise.de/
+        
+  test_execution_chrome_envvar:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     services:
