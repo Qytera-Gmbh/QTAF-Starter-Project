@@ -53,3 +53,15 @@ jobs:
       - name: check env WEBSITE
         run: echo ${{env.WEBSITE}}
 
+  build_artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: actions/checkout@v2
+        uses: actions/checkout@v2
+      - name: mvn install
+        run: mvn install -DskipTests --no-transfer-progress
+      - name: build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact-custom
+          path: target/*.jar
