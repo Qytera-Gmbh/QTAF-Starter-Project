@@ -21,7 +21,6 @@ jobs:
           - driver: 'chrome-remote'
             url: http://localhost:4444/wd/hub
 
-
     services:
       chrome:
         image: selenium/standalone-chrome
@@ -49,4 +48,5 @@ jobs:
         run: |
           mvn test --no-transfer-progress \
           -Ddriver.name=${{ matrix.driver }} \
-          -Ddriver.remoteUrl=${{ matrix.url }}
+          -Ddriver.remoteUrl=${{ matrix.url }} \
+          -Dwebsite=https://qytera.de
