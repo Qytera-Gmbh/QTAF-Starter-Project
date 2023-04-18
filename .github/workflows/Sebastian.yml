@@ -15,6 +15,12 @@ jobs:
     strategy:
       matrix:
         driver: [ 'firefox-remote', 'chrome-remote' ]
+        include:
+          - driver: 'firefox-remote'
+            url: http://localhost:4445/wd/hub
+          - driver: 'chrome-remote'
+            url: http://localhost:4444/wd/hub
+
 
     services:
       chrome:
@@ -39,15 +45,8 @@ jobs:
       - name: check java version
         run: |
           java --version
-      - name: run firefox tests
-        if: matrix.driver == 'firefox-remote'
+      - name: run tests
         run: |
           mvn test --no-transfer-progress \
           -Ddriver.name=${{ matrix.driver }} \
-          -Ddriver.remoteUrl=http://localhost:4445/wd/hub
-      - name: run chrome tests
-        if: matrix.driver == 'chrome-remote'
-        run: |
-          mvn test --no-transfer-progress \
-          -Ddriver.name=${{ matrix.driver }} \
-          -Ddriver.remoteUrl=http://localhost:4444/wd/hub
+          -Ddriver.remoteUrl=${{ matrix.url }}
