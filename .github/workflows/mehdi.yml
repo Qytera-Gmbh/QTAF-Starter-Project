@@ -7,11 +7,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  Install Java:
+  install_java:
     runs-on: windows-latest
 
     steps:
       - name: Install Java
         uses: actions/setup-java@v2
         with:
-          java-version: '17'
+          java-version: '15'
+          distribution: 'adopt'
