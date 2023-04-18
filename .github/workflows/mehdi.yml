@@ -19,5 +19,6 @@ jobs:
       - name: copy git code
         run: |
           ls
+      - uses: actions/checkout@v3
       - name: maven clean
         run: mvn clean compile

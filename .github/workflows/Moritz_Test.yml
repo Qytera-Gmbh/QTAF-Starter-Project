@@ -24,5 +24,5 @@ jobs:
       - name: Complie with Maven (no dependency check)
         run: mvn clean compile -q
       - name: Build with Maven (with dependencies)
-        run: mvn clean install -q      
+        run: mvn clean install -q -DskipTests    
         

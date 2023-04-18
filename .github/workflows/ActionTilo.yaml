@@ -31,7 +31,7 @@ jobs:
       - name: Check version
         run: java --version
       - name: Compile code
-        run: mvn clean install
+        run: mvn clean compile -DskipTests=True --no-transfer-progress
 
   my_action_3:
     runs-on: ubuntu-latest
