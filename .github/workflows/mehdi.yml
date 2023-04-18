@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  WEBSITE: "Mehdi"
+  WEBSITE: "https://www.google.com"
 
 jobs:
   install_java:
