@@ -52,6 +52,9 @@ public class SeleniumTest extends TestContext {
     public void afterTest() {
         System.out.println("Hello, @AfterTest SeleniumTest");
         mainSitePO.checkCalculation(5, 4, 20);
+        String url = config.getString("WEBSITE");
+        System.out.println("Website: " + url);
+        mainSitePO.openSite(url);
     }
 
     @AfterSuite
