@@ -1,4 +1,4 @@
-name: Learn Github Actions
+name: Learn Github actions
 
 on:
   workflow_dispatch:
@@ -68,7 +68,11 @@ jobs:
           distribution: 'zulu'
       - name: Run tests chrome
         run: mvn clean test -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub -Dwebsite=${{ env.WEBSITE }} --no-transfer-progress
-
+      - name: Logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: logs
 
   build_and_run_on_java_17_firefox:
     runs-on: ubuntu-latest
@@ -86,3 +90,8 @@ jobs:
           distribution: 'zulu'
       - name: Run tests firefox
         run: mvn clean test -Ddriver.name=firefox-remote -Ddriver.remoteUrl=http://localhost:4445/wd/hub --no-transfer-progress
+      - name: Logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: logs

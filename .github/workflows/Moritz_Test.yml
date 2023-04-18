@@ -37,7 +37,12 @@ jobs:
       #  run: mvn clean install -q -DskipTests  
       - name: Testrun with Maven against chrome
         run: mvn clean test -q -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub -Dwebsite=https://www.heise.de/
-        
+      - name: Archive QTAF logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: QTAF-logs
+          path: logs 
+          
   test_execution_chrome_envvar:
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -67,6 +72,11 @@ jobs:
       #  run: mvn clean install -q -DskipTests  
       - name: Testrun with Maven against chrome
         run: mvn clean test -q -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub
+      - name: Archive QTAF logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: QTAF-logs
+          path: logs
 
   test_execution_firefox:
     runs-on: ubuntu-latest
@@ -91,3 +101,8 @@ jobs:
         run: java --version
       - name: Testrun with Maven against firefox
         run: mvn clean test -q -Ddriver.name=firefox-remote -Ddriver.remoteUrl=http://localhost:4445/wd/hub
+      - name: Archive QTAF logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: QTAF-logs
+          path: logs
