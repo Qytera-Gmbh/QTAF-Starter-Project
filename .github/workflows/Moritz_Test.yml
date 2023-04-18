@@ -1,0 +1,25 @@
+# Moritz Test Pipeline
+name: Moritz Test Pipeline
+
+on:
+  workflow_dispatch:
+
+jobs:
+   test_execution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+      - name: test checkout sources
+        run: ls
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+      - name: Test Java installation
+        run: java --version
+      - name: Build with Maven
+        run: mvn clean compile

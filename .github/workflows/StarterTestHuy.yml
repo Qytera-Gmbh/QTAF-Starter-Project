@@ -1,0 +1,27 @@
+name: StarterTest
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  test_huy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print helo weorld
+        run: echo "Helo, weorld!"
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+      - name: java --version
+        run: java --version
+      - name: mvn --version
+        run: mvn --version
+      - name: mvn clean install
+        run: mvn clean install -DskipTests
+
