@@ -1,15 +1,9 @@
 name: StarterTest
 
-on:
-  push:
-    branches:
-      - main
-      - master
-  workflow_dispatch:
-
 env:
   JAVA_VERSION: '17'
   JAVA_DISTRIBUTION: 'zulu'
+
 
 jobs:
   test_huy:
@@ -20,8 +14,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v2
         with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: 'zulu'
+          java-version: ${{env.JAVA_VERSION}}
+          distribution: ${{env.JAVA_DISTRIBUTION}}
           cache: 'maven'
       - name: java --version
         run: java --version
