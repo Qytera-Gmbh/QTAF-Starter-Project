@@ -21,7 +21,7 @@ jobs:
       - uses: actions/setup-java@v2
         with:
           java-version: ${{ env.JAVA_VERSION }}
-          distribution: ${{ env.JAVA_DISTRIBUTION }}}
+          distribution: 'zulu'
           cache: 'maven'
       - name: java --version
         run: java --version
