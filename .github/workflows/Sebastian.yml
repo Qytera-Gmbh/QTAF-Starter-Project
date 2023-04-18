@@ -21,9 +21,6 @@ jobs:
           - driver: 'chrome-remote'
             url: http://localhost:4444/wd/hub
 
-    env:
-      WEBSITE: "https://github.com"
-
     services:
       chrome:
         image: selenium/standalone-chrome
@@ -51,4 +48,10 @@ jobs:
         run: |
           mvn test --no-transfer-progress \
           -Ddriver.name=${{ matrix.driver }} \
-          -Ddriver.remoteUrl=${{ matrix.url }}
+          -Ddriver.remoteUrl=${{ matrix.url }} \
+          -Dwebsite=https://qytera.de
+      - name: archive logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: log
+          path: logs
