@@ -43,6 +43,6 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
       - name: Run tests chrome
-        run: mvn clean test -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub
+        run: mvn clean test -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub --no-transfer-progress
       - name: Run tests firefox
-        run: mvn clean test -Ddriver.name=firefox-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub
+        run: mvn clean test -Ddriver.name=firefox-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub --no-transfer-progress
