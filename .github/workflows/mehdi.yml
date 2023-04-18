@@ -1,0 +1,17 @@
+name: Install Java
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  Install Java:
+    runs-on: windows-latest
+
+    steps:
+      - name: Install Java
+          uses: actions/setup-java@v2
+          with:
+            java-version: '17'
