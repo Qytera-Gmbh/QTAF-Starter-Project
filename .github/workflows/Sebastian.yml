@@ -13,6 +13,10 @@ jobs:
   compile:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - name: check directory content
+        run: |
+          ls -l
       - uses: actions/setup-java@v3
         with:
           java-version: ${{ env.JAVA_VERSION }}
@@ -21,10 +25,6 @@ jobs:
       - name: check java version
         run: |
           java --version
-      - uses: actions/checkout@v3
-      - name: check directory content
-        run: |
-          ls -l
       - name: compile code
         run: |
           mvn --version
