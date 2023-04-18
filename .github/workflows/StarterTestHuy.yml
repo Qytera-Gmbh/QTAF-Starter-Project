@@ -24,6 +24,7 @@ jobs:
     strategy:
       matrix:
         browser: [chrome, firefox]
+        ports: [4444, 4445]
     steps:
       - name: Print helo weorld
         run: echo "Helo, weorld!"
@@ -43,6 +44,6 @@ jobs:
       - name: mvn clean install
         run: mvn clean install -DskipTests --no-transfer-progress
       - name: Run test ${{matrix.browser}}
-        run: mvn clean test -Ddriver.name=${{matrix.browser}}-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub
+        run: mvn clean test -Ddriver.name=${{matrix.browser}}-remote -Ddriver.remoteUrl=http://localhost:{{matrix.ports}}/wd/hub
 
 
