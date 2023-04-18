@@ -7,6 +7,7 @@ on:
 env:
   JAVA_VERSION: '17'
   JAVA_DISTRIBUTION: 'zulu'
+  JAVA_BUILD_TOOL: 'maven'
 
 jobs:
   compile:
@@ -16,11 +17,11 @@ jobs:
         with:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: ${{ env.JAVA_DISTRIBUTION }}
-          cache: 'maven'
+          cache: ${{ env.JAVA_BUILD_TOOL }}
       - name: check java version
         run: |
           java --version
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: check directory content
         run: |
           ls -l
