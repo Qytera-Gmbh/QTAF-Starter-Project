@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-   test_execution_chrome:
+  test_execution_chrome:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     services:
@@ -34,9 +34,8 @@ jobs:
       #  run: mvn clean install -q -DskipTests  
       - name: Testrun with Maven against chrome
         run: mvn clean test -q -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub
-        
-jobs:
-   test_execution_firefox:
+
+  test_execution_firefox:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     services:
