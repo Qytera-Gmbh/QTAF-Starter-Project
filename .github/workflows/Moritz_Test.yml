@@ -1,4 +1,4 @@
-# Moritz' Test Pipeline
+# Moritz Test Pipeline
 name: Run Qtaf test against SuiteCRM
 
 on:
@@ -6,12 +6,11 @@ on:
     branches:
       - master
   workflow_dispatch:
- 
- jobs:
-   install:
+
+jobs:
+   test_execution:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    
     
     steps:
       - name: Checkout sources
