@@ -7,6 +7,8 @@ jobs:
   test_chrome:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      WEBSITE: https://www.qytera.de
     services:
       chrome:
         image: selenium/standalone-chrome
@@ -23,6 +25,8 @@ jobs:
       - run: java --version
       - name: Compile code
         run: mvn clean compile -DskipTests=True --no-transfer-progress
+      - name: Print website
+        run: echo ${{ env.WEBSITE }}
       - name: Run test cases on Chrome browser
         run: mvn clean test -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub  --no-transfer-progress
 
@@ -46,4 +50,4 @@ jobs:
       - name: Compile code
         run: mvn clean compile -DskipTests=True --no-transfer-progress
       - name: Run test cases on Firefox browser
-        run: mvn clean test -Ddriver.name=firefox-remote -Ddriver.remoteUrl=http://localhost:4445/wd/hub  --no-transfer-progress
+        run: mvn clean test -Ddriver.name=firefox-remote -Ddriver.remoteUrl=http://localhost:4445/wd/hub -Dwebsite=https://qytera-gmbh.github.io --no-transfer-progress
