@@ -1,4 +1,4 @@
-name: Build Docker Images
+name: Action Sebastian
 
 on:
   push:
