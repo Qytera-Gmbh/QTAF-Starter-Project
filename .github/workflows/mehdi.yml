@@ -67,7 +67,7 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
       - name: Run tests chrome
-        run: mvn clean test -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub --no-transfer-progress
+        run: mvn clean test -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub -Dwebsite=${{ env.WEBSITE }} --no-transfer-progress
 
 
   build_and_run_on_java_17_firefox:
