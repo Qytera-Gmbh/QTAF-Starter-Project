@@ -1,27 +1,33 @@
 name: StarterTest
 
-on:
-  push:
-    branches:
-      - main
-      - master
-  workflow_dispatch:
-
 env:
   JAVA_VERSION: '17'
   JAVA_DISTRIBUTION: 'zulu'
 
+on:
+  workflow_dispatch:
+    # triggered manually
+
 jobs:
   test_huy:
     runs-on: ubuntu-latest
+    services:
+      chrome:
+        image: selenium/standalone-chrome
+        ports:
+          - 4444:4444
+      firefox:
+        image: selenium/standalone-firefox
+        ports:
+          - 4445:4444
     steps:
       - name: Print helo weorld
         run: echo "Helo, weorld!"
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v2
         with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: 'zulu'
+          java-version: ${{env.JAVA_VERSION}}
+          distribution: ${{env.JAVA_DISTRIBUTION}}
           cache: 'maven'
       - name: java --version
         run: java --version
@@ -32,5 +38,9 @@ jobs:
           ls -l
       - name: mvn clean install
         run: mvn clean install -DskipTests
+      - name: run test chrome
+        run: mvn clean test -Ddriver.name=chrome-remote -Ddriver.remoteUrl=http://localhost:4444/wd/hub
+      - name: run tests firefox
+        run: mvn clean test -Ddriver.name=firefox-remote -Ddriver.remoteUrl=http://localhost:4445/wd/hub
 
 
