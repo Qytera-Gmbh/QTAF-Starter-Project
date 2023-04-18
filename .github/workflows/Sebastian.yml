@@ -29,3 +29,6 @@ jobs:
         run: |
           mvn --version
           mvn compile --no-transfer-progress
+      - name: run tests
+        run: |
+          mvn test
