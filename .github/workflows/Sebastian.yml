@@ -1,17 +1,30 @@
 name: Action Sebastian
 
 on:
-  push:
-    branches:
-      - master
   workflow_dispatch:
+    # triggered manually
 
 env:
   JAVA_VERSION: '17'
+  JAVA_DISTRIBUTION: 'zulu'
 
 jobs:
   compile:
     runs-on: ubuntu-latest
     steps:
-      - name: say hello
-        run: echo hello from planet earth
+      - uses: actions/setup-java@v3
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTRIBUTION }}
+          cache: 'maven'
+      - name: check java version
+        run: |
+          java --version
+      - uses: actions/checkout@v2
+      - name: check directory content
+        run: |
+          ls -l
+      - name: compile code
+        run: |
+          mvn --version
+          mvn compile --no-transfer-progress
