@@ -25,6 +25,8 @@ jobs:
           ls
       - name: maven clean
         run: mvn clean compile
+      - name: show WEBSITE env
+        run: echo $WEBSITE
 
 
   build_and_run_on_java_17:
