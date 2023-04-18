@@ -1,9 +1,6 @@
 name: Install Java
 
 on:
-  push:
-    branches:
-      - master
   workflow_dispatch:
 
 jobs:
@@ -19,3 +16,8 @@ jobs:
       - name: Echo Java version
         run: |
           java --version
+      - name: copy git code
+        run: |
+          ls
+      - name: maven clean
+        run: mvn clean compile
