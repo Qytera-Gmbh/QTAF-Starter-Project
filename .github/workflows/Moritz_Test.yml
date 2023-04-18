@@ -22,7 +22,9 @@ jobs:
       - name: Test Java installation
         run: java --version
       - name: Complie with Maven (no dependency check)
-        run: mvn clean compile -q
+        run: mvn clean compile -q -B
+      - name: Compile with Maven (with dependencies)
+        run: mvn clean compile -U   
       - name: Build with Maven (with dependencies)
         run: mvn clean install -q -DskipTests    
         
