@@ -9,6 +9,7 @@ on:
 
 jobs:
   my_action:
+    runs-on: ubuntu-latest
     steps:
       - name: Print Hello World
         run: echo "Hello World!"
