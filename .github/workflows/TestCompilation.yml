@@ -3,8 +3,7 @@ name: Build Docker Images
 on:
   push:
     branches:
-      - main
-      - master
+      - deactivated
   workflow_dispatch:
 
 jobs:

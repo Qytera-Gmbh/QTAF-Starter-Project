@@ -1,0 +1,17 @@
+name: Action Sebastian
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+env:
+  JAVA_VERSION: '17'
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: say hello
+        run: echo hello from planet earth
