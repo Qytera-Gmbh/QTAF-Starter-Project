@@ -7,27 +7,22 @@ on:
 
 env:
   TARGET_BRANCH: develop
-  TEAM_NAME: qytera-admins
+  TEAM_NAME: qytera-devs
 
 jobs:
-  release:
+  create-pull-request:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
       - name: Create pull request
         run: |
-          echo ${{ github.event }}
           gh pr create \
-          -B ${{ env.TARGET_BRANCH }} \
-          -H ${{ github.event.repository.default_branch }} \
-          --title 'Release version ${{ github.event.name }}' \
-          --body 'Created by GitHub action to push release `${{ github.event.name }}` to branch `${{ env.TARGET_BRANCH }}`.'
-          --assignee ${{ github.event.author.name }}
+          --base ${{ env.TARGET_BRANCH }} \
+          --head ${{ github.event.repository.default_branch }} \
+          --title 'Release version ${{ github.event.release.name }}' \
+          --body 'Created by GitHub action to push release `${{ github.event.release.name }}` to branch `${{ env.TARGET_BRANCH }}`.'
+          --assignee ${{ github.event.release.author.login }}
+          --reviewer ${{ env.TEAM_NAME }}
         env:
           GH_TOKEN: ${{ github.token }}
-      #- name: Create Pull Request
-      #  uses: peter-evans/create-pull-request@v5
-      #  with:
-      #    author: GitHub <noreply@github.com>
-      #    assignees: ${{ github.event.release.author.name }}
