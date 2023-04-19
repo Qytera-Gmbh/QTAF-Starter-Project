@@ -1,64 +1,33 @@
 name: Action Sebastian
-
 on:
+  release:
+    types: [ 'published' ]
   workflow_dispatch:
     # triggered manually
 
 env:
-  JAVA_VERSION: '17'
-  JAVA_DISTRIBUTION: 'zulu'
-  JAVA_BUILD_TOOL: 'maven'
+  TARGET_BRANCH: master
+  TEAM_NAME: qytera-admins
 
 jobs:
-  compile:
+  release:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        driver: [ 'firefox-remote', 'chrome-remote' ]
-        include:
-          - driver: 'firefox-remote'
-            url: http://localhost:4445/wd/hub
-          - driver: 'chrome-remote'
-            url: http://localhost:4444/wd/hub
-
-    services:
-      chrome:
-        image: selenium/standalone-chrome
-        ports:
-          - 4444:4444
-      firefox:
-        image: selenium/standalone-firefox
-        ports:
-          - 4445:4444
 
     steps:
       - name: Print
         run: |
           echo ${{ github.repository_owner }}
-          echo ${{ github.event.repository.name }}          
-          env | sort
-      - run: exit 1
-      - uses: actions/checkout@v3
-      - name: check directory content
+          echo ${{ github.event.repository.name }}
+      - name: Create pull request
         run: |
-          ls -l
-      - uses: actions/setup-java@v3
-        with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: ${{ env.JAVA_DISTRIBUTION }}
-          cache: ${{ env.JAVA_BUILD_TOOL }}
-      - name: check java version
-        run: |
-          java --version
-      - name: run tests
-        run: |
-          mvn test --no-transfer-progress \
-          -Ddriver.name=${{ matrix.driver }} \
-          -Ddriver.remoteUrl=${{ matrix.url }} \
-          -Dwebsite=${{ secrets.PAGE_URL }}
-      - name: archive logs
-        uses: actions/upload-artifact@v3
-        with:
-          name: log
-          path: |
-            logs
+          gh pr create \
+          -B ${{ github.event.repository.default_branch }} \
+          -H ${{ env.TARGET_BRANCH }} \
+          --title 'Release version ${{ github.event.release.name }}' \
+          --body 'Created by GitHub action for pushing changes to branch `${{ env.TARGET_BRANCH }}`.'
+          --assignee ${{ github.event.release.author.name }}
+      #- name: Create Pull Request
+      #  uses: peter-evans/create-pull-request@v5
+      #  with:
+      #    author: GitHub <noreply@github.com>
+      #    assignees: ${{ github.event.release.author.name }}
