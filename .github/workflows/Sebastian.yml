@@ -14,10 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print
-        run: |
-          echo ${{ github.repository_owner }}
-          echo ${{ github.event.repository.name }}
+      - uses: actions/checkout@v3
       - name: Create pull request
         run: |
           gh pr create \
