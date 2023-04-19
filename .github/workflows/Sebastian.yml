@@ -17,11 +17,12 @@ jobs:
       - uses: actions/checkout@v3
       - name: Create pull request
         run: |
+          echo ${{ github.event.release }}
           gh pr create \
           -B ${{ env.TARGET_BRANCH }} \
           -H ${{ github.event.repository.default_branch }} \
           --title 'Release version ${{ github.event.release.name }}' \
-          --body 'Created by GitHub action for pushing changes to branch `${{ env.TARGET_BRANCH }}`.'
+          --body 'Created by GitHub action to push release `${{ github.event.release.name }}` to branch `${{ env.TARGET_BRANCH }}`.'
           --assignee ${{ github.event.release.author.name }}
         env:
           GH_TOKEN: ${{ github.token }}
