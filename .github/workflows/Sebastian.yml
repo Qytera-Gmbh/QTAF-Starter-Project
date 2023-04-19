@@ -6,7 +6,7 @@ on:
     # triggered manually
 
 env:
-  SOURCE_BRANCH: develop
+  TARGET_BRANCH: develop
   TEAM_NAME: qytera-admins
 
 jobs:
@@ -18,8 +18,8 @@ jobs:
       - name: Create pull request
         run: |
           gh pr create \
-          -B ${{ github.event.repository.default_branch }} \
-          -H ${{ env.SOURCE_BRANCH }} \
+          -B ${{ env.TARGET_BRANCH }} \
+          -H ${{ github.event.repository.default_branch }} \
           --title 'Release version ${{ github.event.release.name }}' \
           --body 'Created by GitHub action for pushing changes to branch `${{ env.TARGET_BRANCH }}`.'
           --assignee ${{ github.event.release.author.name }}
