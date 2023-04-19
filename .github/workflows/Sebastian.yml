@@ -21,8 +21,8 @@ jobs:
           --base ${{ env.TARGET_BRANCH }} \
           --head ${{ github.event.repository.default_branch }} \
           --title 'Release version ${{ github.event.release.name }}' \
-          --body 'Created by GitHub action to push release `${{ github.event.release.name }}` to branch `${{ env.TARGET_BRANCH }}`.'
-          --assignee ${{ github.event.release.author.login }}
+          --body 'Created by GitHub action to push release `${{ github.event.release.name }}` to branch `${{ env.TARGET_BRANCH }}`.' \
+          --assignee ${{ github.event.release.author.login }} \
           --reviewer ${{ env.TEAM_NAME }}
         env:
           GH_TOKEN: ${{ github.token }}
