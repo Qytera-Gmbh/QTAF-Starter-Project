@@ -6,7 +6,7 @@ on:
     # triggered manually
 
 env:
-  SOURCE_BRANCH: master
+  SOURCE_BRANCH: develop
   TEAM_NAME: qytera-admins
 
 jobs:
