@@ -1,10 +1,8 @@
 package org.acme.page_objects;
 
 import de.qytera.qtaf.core.guice.annotations.Step;
-import de.qytera.qtaf.testng.context.QtafTestNGContext;
 import org.acme.TestContext;
-
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 
 @Singleton
 public class PageHelper extends TestContext {
