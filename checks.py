@@ -33,10 +33,10 @@ n_html_files_expected, n_html_files = 8, len(list(filter(lambda x: x[-4:] == "ht
 n_json_files_expected, n_json_files = 1, len(list(filter(lambda x: x[-4:] == "json", log_files)))
 n_png_files_expected, n_png_files = 22, len(list(filter(lambda x: x[-3:] == "png", log_files)))
 n_log4j_files_expected, n_log4j_files = 1, len(log4j_files)
-assert n_html_files == n_html_files_expected, f"There should be {n_html_files} HTML files in the log directory, but there were {n_html_files}"
-assert n_json_files == n_json_files_expected, f"There should be {n_json_files} JSON file in the log directory, but there were {n_json_files}"
-assert n_png_files == n_png_files_expected, f"There should be {n_png_files} PNG files in the log directory, but there were {n_png_files}"
-assert n_log4j_files == n_log4j_files_expected, f"There should be {n_log4j_files} log4j log file, but there were {n_log4j_files}"
+assert n_html_files == n_html_files_expected, f"There should be {n_html_files_expected} HTML file(s) in the log directory, but there were {n_html_files}"
+assert n_json_files == n_json_files_expected, f"There should be {n_json_files_expected} JSON file(s) in the log directory, but there were {n_json_files}"
+assert n_png_files == n_png_files_expected, f"There should be {n_png_files_expected} PNG file(s) in the log directory, but there were {n_png_files}"
+assert n_log4j_files == n_log4j_files_expected, f"There should be {n_log4j_files_expected} log4j log file(s), but there were {n_log4j_files}"
 
 # Clean directories
 shutil.rmtree("allure-results")
