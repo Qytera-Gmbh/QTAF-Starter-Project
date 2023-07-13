@@ -1,10 +1,10 @@
 package org.acme.page_objects;
 
 import de.qytera.qtaf.core.guice.annotations.Step;
+import jakarta.inject.Singleton;
 import org.acme.TestContext;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import jakarta.inject.Singleton;
 
 @Singleton
 public class MainSitePO extends TestContext {
@@ -34,7 +34,7 @@ public class MainSitePO extends TestContext {
             description = "Check calculation"
     )
     public void checkCalculation(int a, int b, int c) {
-        Assert.assertEquals(a*b, c);
+        Assert.assertEquals(a * b, c);
     }
 
     @Step(name = "sayHello", description = "Say Hello")
