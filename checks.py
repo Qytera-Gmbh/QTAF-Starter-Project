@@ -25,6 +25,7 @@ assert os.path.exists(logs_dir + "/Report.html"), "There should be a file named 
 assert os.path.exists(logs_dir + "/Report.json"), "There should be a file named Report.json"
 
 log_files = os.listdir(logs_dir)
+print(log_files)
 log4j_files = list(filter(lambda x: x[0:11] == "application" and x[-4:] == ".log", os.listdir('.')))
 
 # Check if all log files were created
