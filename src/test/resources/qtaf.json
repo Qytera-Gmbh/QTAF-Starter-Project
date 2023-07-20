@@ -5,6 +5,7 @@
     },
     "package": "org.acme.tests"
   },
+  "website": "https://www.qytera.de",
   "driver": {
     "name": "firefox",
     "remoteUrl": null,
