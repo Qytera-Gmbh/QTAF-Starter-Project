@@ -2,7 +2,8 @@ package org.acme.tests;
 
 
 import de.qytera.qtaf.core.config.annotations.TestFeature;
-import org.acme.TestContext;
+import de.qytera.qtaf.testng.context.QtafTestNGContext;
+import org.acme.page_objects.MainSitePO;
 import org.acme.page_objects.PageHelper;
 import org.testng.annotations.*;
 
@@ -10,7 +11,17 @@ import org.testng.annotations.*;
         name = "SeleniumTest",
         description = "Our first Selenium test"
 )
-public class SeleniumTest extends TestContext {
+public class SeleniumTest extends QtafTestNGContext {
+    private MainSitePO mainSitePO;
+    private PageHelper pageHelper;
+
+    @Override
+    public QtafTestNGContext initialize() {
+        super.initialize();
+        mainSitePO = load(MainSitePO.class);
+        pageHelper = load(PageHelper.class);
+        return this;
+    }
 
     @BeforeSuite
     public void beforeSuite() {

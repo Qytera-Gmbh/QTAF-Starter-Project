@@ -1,11 +1,11 @@
 package org.acme.page_objects;
 
 import de.qytera.qtaf.core.guice.annotations.Step;
+import de.qytera.qtaf.testng.context.QtafTestNGContext;
 import jakarta.inject.Singleton;
-import org.acme.TestContext;
 
 @Singleton
-public class PageHelper extends TestContext {
+public class PageHelper extends QtafTestNGContext {
     @Step(name = "check_if_present", description = "Check if element is present")
     public void checkIfPresent(String selector) {
         System.out.println("Before static method");
@@ -15,6 +15,7 @@ public class PageHelper extends TestContext {
 
     @Step(name = "outer step", description = "Outer step method")
     public void outerStep() {
+        MainSitePO mainSitePO = load(MainSitePO.class);
         System.out.println("Outer Step");
         innerStep();
         mainSitePO.checkCalculation(2, 2, 4);

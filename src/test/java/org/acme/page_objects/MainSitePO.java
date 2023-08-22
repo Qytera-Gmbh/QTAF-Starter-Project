@@ -1,14 +1,16 @@
 package org.acme.page_objects;
 
 import de.qytera.qtaf.core.guice.annotations.Step;
+import de.qytera.qtaf.testng.context.QtafTestNGContext;
 import jakarta.inject.Singleton;
-import org.acme.TestContext;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import static com.codeborne.selenide.Selenide.$;
+
 @Singleton
-public class MainSitePO extends TestContext {
-    String headlineSelector = "div.text-center h1";
+public class MainSitePO extends QtafTestNGContext {
+    By headlineSelector = By.cssSelector("div.text-center h1");
 
     @Step(
             name = "Open Site",
@@ -25,8 +27,8 @@ public class MainSitePO extends TestContext {
     )
     public void checkHeadline(String expectedText) {
         // Extract headline text from website
-        String headlineText = driver.findElement(By.cssSelector(headlineSelector)).getText();
-        Assert.assertEquals(headlineText, expectedText);
+        String headlineText = $(headlineSelector).text();
+        assertEquals(headlineText, expectedText);
     }
 
     @Step(
@@ -34,7 +36,7 @@ public class MainSitePO extends TestContext {
             description = "Check calculation"
     )
     public void checkCalculation(int a, int b, int c) {
-        Assert.assertEquals(a * b, c);
+        assertEquals(a * b, c);
     }
 
     @Step(name = "sayHello", description = "Say Hello")
