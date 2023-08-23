@@ -11,6 +11,7 @@ allure-results/
 logs/
 test-output/
 videos/
+*.log
 
 # User-specific stuff
 .idea/**/workspace.xml
