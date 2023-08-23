@@ -17,18 +17,25 @@
         <dependency>
             <groupId>de.qytera</groupId>
             <artifactId>qtaf-core</artifactId>
-            <version>0.2.0</version>
+            <version>0.2.1</version>
         </dependency>
         <dependency>
             <groupId>de.qytera</groupId>
             <artifactId>qtaf-html-report-plugin</artifactId>
-            <version>0.2.0</version>
+            <version>0.2.1</version>
         </dependency>
         <dependency>
             <groupId>de.qytera</groupId>
             <artifactId>qtaf-allure-plugin</artifactId>
-            <version>0.2.0</version>
+            <version>0.2.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>

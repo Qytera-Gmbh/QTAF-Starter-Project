@@ -32,6 +32,6 @@
     "enabled": true
   },
   "framework": {
-    "packageNames": []
+    "packageNames": ["org.acme"]
   }
 }
