@@ -3,7 +3,8 @@
     "suite": {
       "name": ""
     },
-    "package": "org.acme.tests"
+    "package": "org.acme.tests",
+	"continueOnAssertionFailure": true
   },
   "website": "https://www.qytera.de",
   "driver": {
